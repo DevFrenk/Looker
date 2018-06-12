@@ -38,19 +38,9 @@ view: shipments {
     sql: CAST(${TABLE}.CREATED as timestamp) ;;
   }
 
-  dimension: months_since_sign_up {
-    type: number
-    sql: DATEDIFF('month',${account_facts.sign_up_date},${created_date}) ;;
-  }
 
-  measure: total_new_users  {
-    type: count_distinct
-    sql: ${accountid} ;;
-    filters: {
-      field: months_since_sign_up
-      value: "=0"
-    }
-  }
+
+
 
   dimension: createdby {
     type: string
@@ -121,7 +111,6 @@ view: shipments {
   dimension: recipient_city  {
     group_label: "Recipient"
     type: string
-    map_layer_name: nl_zipcodes
     sql: initcap(REPLACE(${recipient}:city,'""')) ;;
   }
 
