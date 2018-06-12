@@ -1,5 +1,5 @@
 view: shipments {
-  sql_table_name: PUBLIC.SHIPMENTS ;;
+  sql_table_name: public.shipment ;;
 
   dimension: id {
     primary_key: yes
